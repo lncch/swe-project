@@ -122,7 +122,7 @@ export const SCOPE_OUT: ScopeItem[] = [
 
 
 export const CLOSING: Pain[] = [
-  { who: 'Assumed', text: 'Drivers, companies and establishments will entrust their credentials to the portal; companies will pay for access to job postings; drivers are literate and fill out the forms themselves.' },
-  { who: 'Constrained', text: 'Approval from the Ministry of Human Resources and Social Development and the Ministry of Commerce to operate an employing or mediation portal, adherence to HRSD conditions and policies, access to the Absher and Nafath APIs, and strict adherence to Transport General Authority standards.' },
-  { who: 'Dependent on', text: 'Nafath and Absher, telecom and SMS gateways (STC, Mobily, Zain), the Wathq API, local cloud hosting, a payment gateway, and SSL and other security certificates.' },
+  { who: 'Assumptions', text: 'Users will trust the platform, companies will pay a commission fee for successful hires, and drivers can fill out their own forms.' },
+  { who: 'Constraints', text: 'Need government approvals (HRSD, Ministry of Commerce) and must follow Transport General Authority rules.' },
+  { who: 'Dependencies', text: 'Government APIs (Nafath, Absher, Wathq), payment gateways, and SMS services.' },
 ];
