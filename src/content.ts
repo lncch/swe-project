@@ -94,6 +94,12 @@ export const OBJECTIVES: string[] = [
   'To reduce unsuitable applications by presenting requirements clearly before a driver applies.',
 ];
 
+/** Slide 6: the report's platform paragraph, split into its two channels and what they share. */
+export const WEBSITE_FOR = ['Drivers', 'Company recruiters'];
+export const APP_ACCESS = ['Vacancies', 'Applications', 'Notifications', 'Saved jobs'];
+export const SHARED =
+  'Both use the same database and backend services, so each side sees the same data.';
+
 export const FEATURES: Feature[] = [
   { id: 'IN-01', title: 'Registration & verification', rationale: "Checking drivers' IDs and company data to ensure the safety and trustworthiness of the platform." },
   { id: 'IN-02', title: 'Job management', rationale: 'Enabling companies to publish information on job characteristics, compensation and benefits.' },

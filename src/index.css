@@ -201,6 +201,29 @@ tbody tr:last-child td{border-bottom:0}
 .feat .k{font-family:"Thmanyah Sans",Arial,sans-serif;font-weight:700;font-size:13px;color:var(--accent-line)}
 .feat p{font-size:13.5px;line-height:1.55;color:var(--muted)}
 
+/* ---------- platform (slide 6) ---------- */
+.platform{display:flex;flex-direction:column}
+.platform .feat article{padding:22px 24px 24px;gap:10px}
+.platform .feat h3{font-size:clamp(19px,1.6vw,24px)}
+.platform .feat p{font-size:clamp(14px,1.15vw,16.5px)}
+.access{list-style:none;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.access li{
+  background:var(--sunk);border:1px solid var(--line);border-radius:4px;
+  padding:9px 12px;font-size:clamp(13.5px,1.05vw,15.5px);font-weight:500;
+}
+.joins{position:relative;height:34px}
+.joins::before,.joins::after{
+  content:"";position:absolute;top:0;bottom:0;width:2px;background:var(--green-line);
+}
+.joins::before{left:25%}
+.joins::after{left:75%}
+.shared{
+  background:var(--surface);border:1px solid var(--line);border-top:2px solid var(--green-line);
+  padding:18px 24px;text-align:center;
+  font-size:clamp(15px,1.3vw,19px);line-height:1.5;
+}
+@media (max-width:620px){.joins::before{left:50%}.joins::after{display:none}}
+
 /* ---------- goal ---------- */
 /* The sign panel above is already a green fill, so the goal takes slide 2's
    quote treatment instead: the green stays as a rule, the display serif and
