@@ -1,4 +1,5 @@
 import { useLayoutEffect, useRef, type ReactNode } from 'react';
+import Mark from './Mark';
 import SignPanel from './SignPanel';
 
 /** Below this, shrinking hurts more than scrolling would. */
@@ -83,8 +84,16 @@ export default function Slide({ active, number, sign, children }: Props) {
   return (
     <section className={active ? 'slide on' : 'slide'} aria-hidden={!active}>
       <div className="frame">
-        {/* Outside the fit box, so the sign is the same size on every slide. */}
-        {sign && <SignPanel number={number} english={sign.english} />}
+        {/* Outside the fit box, so the sign and the logo keep one size on every slide. */}
+        {sign && (
+          <div className="slidehead">
+            <SignPanel number={number} english={sign.english} />
+            <div className="headbrand">
+              <Mark />
+              <span>HireWheel</span>
+            </div>
+          </div>
+        )}
         <div className="fitbox" ref={frame}>
           <div className="body" ref={body}>
             {children}
