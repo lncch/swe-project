@@ -188,10 +188,11 @@ h3{font-family:"Thmanyah Sans",Arial,sans-serif;font-weight:700;letter-spacing:-
 @media (max-width:620px){.feat.four{grid-template-columns:1fr}}
 
 /* ---------- features ---------- */
-.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+/* cards stand apart: a real gutter, each with its own edge */
+.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,1.1vw,16px)}
 @media (max-width:900px){.feat{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:560px){.feat{grid-template-columns:1fr}}
-.feat article{background:var(--surface);padding:17px 19px 19px;display:flex;flex-direction:column;gap:7px}
+.feat article{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:17px 19px 19px;display:flex;flex-direction:column;gap:7px}
 .feat h3{font-size:17.5px}
 .feat .k{font-family:"Thmanyah Sans",Arial,sans-serif;font-weight:700;font-size:13px;color:var(--accent-line)}
 .feat p{font-size:13.5px;line-height:1.55;color:var(--muted)}
@@ -214,7 +215,7 @@ h3{font-family:"Thmanyah Sans",Arial,sans-serif;font-weight:700;letter-spacing:-
 .joins::after{left:75%}
 .shared{
   background:var(--surface);border:1px solid var(--line);border-top:2px solid var(--green-line);
-  padding:18px 24px;text-align:center;
+  border-radius:6px;padding:18px 24px;text-align:center;
   font-size:clamp(15px,1.3vw,19px);line-height:1.5;
 }
 @media (max-width:620px){.joins::before{left:50%}.joins::after{display:none}}
