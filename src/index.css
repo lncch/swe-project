@@ -149,6 +149,8 @@ h3{font-family:"Thmanyah Sans",Arial,sans-serif;font-weight:700;letter-spacing:-
 
 /* ---------- title slide ---------- */
 .title-wrap{flex:1;display:flex;flex-direction:column;justify-content:center;gap:clamp(20px,2.6cqw,36px)}
+/* the title's line breaks are written in, so each line stays whole */
+.title-wrap h1{white-space:nowrap}
 .brandrow{display:flex;align-items:center;gap:clamp(16px,1.8cqw,26px)}
 .mark{height:clamp(48px,5.4cqw,82px);width:auto;display:block;flex-shrink:0}
 .brandname{

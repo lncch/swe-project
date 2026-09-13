@@ -4,8 +4,9 @@ import SignPanel from './SignPanel';
 
 /** Below this, shrinking hurts more than scrolling would. */
 const MIN_SCALE = 0.52;
-/** Above this, a sparse slide starts to look like a poster. */
-const MAX_SCALE = 1.34;
+/** A safety bound only. The stage is fixed, so sparse slides are allowed to
+    grow until they fill the frame instead of stopping short of the bottom. */
+const MAX_SCALE = 2.2;
 
 interface Props {
   active: boolean;
@@ -40,18 +41,26 @@ export default function Slide({ active, number, sign, children }: Props) {
       if (!availH) return;
 
       b.style.transform = 'none';
+      b.style.marginTop = '0px';
 
       // Settle on a layout width. A narrower body re-wraps text taller, which
       // asks for a smaller scale, which widens it again, so an undamped step
       // oscillates instead of converging. The exponent damps it.
       let s = 1;
+      // Lines that must not wrap (the title's two lines) have a fixed width,
+      // so a larger scale, which narrows the layout, can push them past the
+      // edge. The first time that happens the ceiling for s is known exactly.
+      let widthCap = Infinity;
       for (let pass = 0; pass < 6; pass += 1) {
         b.style.width = `${100 / s}%`;
         const h = b.scrollHeight;
         if (!h) return;
+        if (b.scrollWidth > b.clientWidth + 1) {
+          widthCap = Math.min(widthCap, (s * b.clientWidth) / b.scrollWidth);
+        }
         const ratio = availH / (s * h);
-        if (Math.abs(ratio - 1) < 0.005) break;
-        const next = clamp(s * Math.pow(ratio, 0.6));
+        if (Math.abs(ratio - 1) < 0.005 && s <= widthCap) break;
+        const next = Math.min(clamp(s * Math.pow(ratio, 0.6)), widthCap);
         if (Math.abs(next - s) < 0.003) {
           s = next;
           break;
@@ -62,10 +71,13 @@ export default function Slide({ active, number, sign, children }: Props) {
       // The width is now fixed, and a transform never changes layout, so this
       // height is final. Taking the smaller of the two bounds cannot overflow:
       // width is bounded by s, height by what actually fits.
+      s = Math.min(s, widthCap);
       b.style.width = `${100 / s}%`;
       const settled = b.scrollHeight;
       const applied = Math.max(MIN_SCALE, Math.min(s, (availH / settled) * 0.99));
       b.style.transform = `scale(${applied})`;
+      // A slide held back by its width leaves height over; share it above and below.
+      b.style.marginTop = `${Math.max(0, (availH - settled * applied) / 2)}px`;
     };
 
     fit();
