@@ -87,11 +87,17 @@ export const GOAL =
   'Connect companies that need professional drivers with those already in Saudi Arabia, through a trusted platform.';
 
 
-export const OBJECTIVES: string[] = [
-  'To assist companies and establishments to look for new drivers living in Saudi Arabia rather than recruiting from outside the Kingdom.',
-  'To enable companies to create detailed and searchable driver vacancies.',
-  'To reduce the time for companies and establishments to hire drivers with the desired qualifications.',
-  'To reduce unsuitable applications by presenting requirements clearly before a driver applies.',
+export interface Objective {
+  id: `OBJ-${number}`;
+  text: string;
+}
+
+/** The report's own IDs, so a gap (no OBJ-1, 2 or 6) is expected. */
+export const OBJECTIVES: Objective[] = [
+  { id: 'OBJ-3', text: 'To assist companies and establishments to look for new drivers living in Saudi Arabia rather than recruiting from outside the Kingdom.' },
+  { id: 'OBJ-4', text: 'To enable companies to create detailed and searchable driver vacancies.' },
+  { id: 'OBJ-5', text: 'To reduce the time for companies and establishments to hire drivers with the desired qualifications.' },
+  { id: 'OBJ-7', text: 'To reduce unsuitable applications by presenting requirements clearly before a driver applies.' },
 ];
 
 /** Slide 6: the report's platform paragraph, split into its two channels and what they share. */

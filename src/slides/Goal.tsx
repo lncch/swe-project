@@ -8,9 +8,10 @@ export default function Goal() {
       <div className="featblock">
         <h3 className="seclabel in">Objectives</h3>
         <div className="feat pair objectives">
-          {OBJECTIVES.map((objective) => (
-            <article key={objective}>
-              <p>{objective}</p>
+          {OBJECTIVES.map((o) => (
+            <article key={o.id}>
+              <span className="k">{o.id}</span>
+              <p>{o.text}</p>
             </article>
           ))}
         </div>

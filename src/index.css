@@ -161,8 +161,8 @@ h3{font-family:"Thmanyah Sans",Arial,sans-serif;font-weight:700;letter-spacing:-
 }
 
 /* ---------- objectives (slide 5) ---------- */
-/* no title or code on these cards, so the sentence itself takes the title's weight */
-.feat.objectives article{justify-content:center;padding:22px 24px}
+/* no title on these cards, so the sentence itself takes the title's weight */
+.feat.objectives article{padding:20px 24px 22px}
 .feat.objectives p{font-size:clamp(15px,1.3vw,19px);line-height:1.5;color:var(--ink)}
 
 /* ---------- scope ---------- */
