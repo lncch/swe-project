@@ -73,22 +73,31 @@ body{
 }
 
 /* ---------- deck shell ---------- */
-.deck{min-height:100dvh}
+/* The deck is the space above the control bar; the stage is the one fixed
+   layout inside it, scaled by --k (set in App.tsx) and centred. Sizes inside
+   the stage use cqw/cqh, so they resolve against 1600x900 on every screen. */
+.deck{position:fixed;inset:0 0 var(--bar-h,56px) 0;overflow:hidden}
+.stage{
+  position:absolute;left:50%;top:50%;
+  width:1600px;height:900px;
+  transform:translate(-50%,-50%) scale(var(--k,1));
+  container-type:size;
+}
 .slide{
-  display:none;height:100dvh;
-  padding:clamp(20px,3.2vw,54px) clamp(22px,4.4vw,76px) 72px;
+  display:none;height:100%;
+  padding:clamp(20px,3.2cqw,54px) clamp(22px,4.4cqw,76px);
 }
 .slide.on{display:block;animation:rise .34s cubic-bezier(.2,.7,.3,1) both}
 .frame{
   height:100%;width:100%;max-width:1460px;margin:0 auto;
-  display:flex;flex-direction:column;gap:clamp(15px,1.9vw,28px);
+  display:flex;flex-direction:column;gap:clamp(15px,1.9cqw,28px);
   overflow:hidden;
 }
 /* the sign sits above this and keeps its own size; only what is inside scales */
 .fitbox{flex:1;min-height:0;overflow:hidden}
 .body{
   display:flex;flex-direction:column;
-  gap:clamp(15px,1.9vw,28px);
+  gap:clamp(15px,1.9cqw,28px);
   width:100%;
   transform-origin:top left;
   will-change:transform;
@@ -97,11 +106,11 @@ body{
 
 /* sign on the left, logo on the right, one row above the content */
 .slidehead{display:flex;align-items:center;justify-content:space-between;gap:16px}
-.headbrand{display:flex;align-items:center;gap:clamp(8px,.8vw,12px);flex-shrink:0}
-.headbrand .mark{height:clamp(30px,2.8vw,44px)}
+.headbrand{display:flex;align-items:center;gap:clamp(8px,.8cqw,12px);flex-shrink:0}
+.headbrand .mark{height:clamp(30px,2.8cqw,44px)}
 .headbrand span{
   font-family:"Thmanyah Display",Georgia,serif;font-weight:900;
-  font-size:clamp(18px,1.7vw,26px);letter-spacing:-.018em;line-height:1;
+  font-size:clamp(18px,1.7cqw,26px);letter-spacing:-.018em;line-height:1;
 }
 
 /* ---------- the guide sign ---------- */
@@ -116,54 +125,54 @@ body{
 }
 .sign-no{
   font-family:"Thmanyah Sans",Arial,sans-serif;font-weight:700;
-  font-size:clamp(24px,3vw,40px);line-height:1;
+  font-size:clamp(24px,3cqw,40px);line-height:1;
   display:flex;align-items:center;
-  padding:0 clamp(14px,1.4vw,20px);
+  padding:0 clamp(14px,1.4cqw,20px);
   background:var(--panel-fill);
   font-variant-numeric:tabular-nums;
 }
 .sign-en{
   font-family:"Thmanyah Sans",Arial,sans-serif;font-weight:600;
-  font-size:clamp(17px,1.9vw,26px);line-height:1.25;
+  font-size:clamp(17px,1.9cqw,26px);line-height:1.25;
   display:flex;align-items:center;
-  padding:clamp(11px,1.3vw,16px) clamp(16px,2vw,26px);
+  padding:clamp(11px,1.3cqw,16px) clamp(16px,2cqw,26px);
 }
 
 h1{font-family:"Thmanyah Display",Georgia,serif;font-weight:900;
-   font-size:clamp(38px,6vw,84px);line-height:1.04;letter-spacing:-.015em;text-wrap:balance}
+   font-size:clamp(38px,6cqw,84px);line-height:1.04;letter-spacing:-.015em;text-wrap:balance}
 h2{font-family:"Thmanyah Display",Georgia,serif;font-weight:700;
-   font-size:clamp(25px,3.3vw,46px);line-height:1.1;letter-spacing:-.012em;text-wrap:balance}
+   font-size:clamp(25px,3.3cqw,46px);line-height:1.1;letter-spacing:-.012em;text-wrap:balance}
 h3{font-family:"Thmanyah Sans",Arial,sans-serif;font-weight:700;letter-spacing:-.01em}
 
-.lede{font-size:clamp(15px,1.3vw,19px);line-height:1.6;color:var(--muted);max-width:72ch}
+.lede{font-size:clamp(15px,1.3cqw,19px);line-height:1.6;color:var(--muted);max-width:72ch}
 .note{font-size:13px;line-height:1.5;color:var(--muted)}
 
 /* ---------- title slide ---------- */
-.title-wrap{flex:1;display:flex;flex-direction:column;justify-content:center;gap:clamp(20px,2.6vw,36px)}
-.brandrow{display:flex;align-items:center;gap:clamp(16px,1.8vw,26px)}
-.mark{height:clamp(48px,5.4vw,82px);width:auto;display:block;flex-shrink:0}
+.title-wrap{flex:1;display:flex;flex-direction:column;justify-content:center;gap:clamp(20px,2.6cqw,36px)}
+.brandrow{display:flex;align-items:center;gap:clamp(16px,1.8cqw,26px)}
+.mark{height:clamp(48px,5.4cqw,82px);width:auto;display:block;flex-shrink:0}
 .brandname{
   font-family:"Thmanyah Display",Georgia,serif;font-weight:700;
-  font-size:clamp(30px,3.6vw,52px);line-height:1;letter-spacing:-.018em;
+  font-size:clamp(30px,3.6cqw,52px);line-height:1;letter-spacing:-.018em;
   display:flex;flex-direction:column;gap:9px;
 }
 .credits{display:flex;flex-direction:column;gap:2px;font-size:13px;color:var(--muted)}
 
 /* ---------- shared blocks ---------- */
-.cols{display:grid;gap:clamp(16px,2vw,32px);align-items:start}
+.cols{display:grid;gap:clamp(16px,2cqw,32px);align-items:start}
 .c2{grid-template-columns:repeat(auto-fit,minmax(310px,1fr))}
 .colhead{font-size:16px;font-weight:700;margin-bottom:6px}
 
 
 .quote{
   background:var(--surface);border-inline-start:5px solid var(--sign);
-  padding:19px 24px;font-size:clamp(15px,1.25vw,18px);line-height:1.55;
+  padding:19px 24px;font-size:clamp(15px,1.25cqw,18px);line-height:1.55;
 }
 
 /* ---------- objectives (slide 5) ---------- */
 /* no title on these cards, so the sentence itself takes the title's weight */
 .feat.objectives article{padding:20px 24px 22px}
-.feat.objectives p{font-size:clamp(15px,1.3vw,19px);line-height:1.5;color:var(--ink)}
+.feat.objectives p{font-size:clamp(15px,1.3cqw,19px);line-height:1.5;color:var(--ink)}
 
 /* ---------- scope ---------- */
 .item{display:flex;gap:13px;padding:11px 0;border-top:1px solid var(--line);font-size:15px;line-height:1.5}
@@ -179,19 +188,14 @@ h3{font-family:"Thmanyah Sans",Arial,sans-serif;font-weight:700;letter-spacing:-
 
 /* slide 4's two primary users, so neither card is orphaned in a row of three */
 .feat.pair{grid-template-columns:repeat(2,1fr)}
-@media (max-width:620px){.feat.pair{grid-template-columns:1fr}}
 
 /* slide 7's included and excluded rows, four cards across each */
 .feat.four{grid-template-columns:repeat(4,1fr)}
 .feat.out-cards .k{color:var(--brick)}
-@media (max-width:1100px){.feat.four{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:620px){.feat.four{grid-template-columns:1fr}}
 
 /* ---------- features ---------- */
 /* cards stand apart: a real gutter, each with its own edge */
-.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,1.1vw,16px)}
-@media (max-width:900px){.feat{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:560px){.feat{grid-template-columns:1fr}}
+.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,1.1cqw,16px)}
 .feat article{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:17px 19px 19px;display:flex;flex-direction:column;gap:7px}
 .feat h3{font-size:17.5px}
 .feat .k{font-family:"Thmanyah Sans",Arial,sans-serif;font-weight:700;font-size:13px;color:var(--accent-line)}
@@ -200,12 +204,12 @@ h3{font-family:"Thmanyah Sans",Arial,sans-serif;font-weight:700;letter-spacing:-
 /* ---------- platform (slide 6) ---------- */
 .platform{display:flex;flex-direction:column}
 .platform .feat article{padding:22px 24px 24px;gap:10px}
-.platform .feat h3{font-size:clamp(19px,1.6vw,24px)}
-.platform .feat p{font-size:clamp(14px,1.15vw,16.5px)}
+.platform .feat h3{font-size:clamp(19px,1.6cqw,24px)}
+.platform .feat p{font-size:clamp(14px,1.15cqw,16.5px)}
 .access{list-style:none;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
 .access li{
   background:var(--sunk);border:1px solid var(--line);border-radius:4px;
-  padding:9px 12px;font-size:clamp(13.5px,1.05vw,15.5px);font-weight:500;
+  padding:9px 12px;font-size:clamp(13.5px,1.05cqw,15.5px);font-weight:500;
 }
 .joins{position:relative;height:34px}
 .joins::before,.joins::after{
@@ -216,17 +220,16 @@ h3{font-family:"Thmanyah Sans",Arial,sans-serif;font-weight:700;letter-spacing:-
 .shared{
   background:var(--surface);border:1px solid var(--line);border-top:2px solid var(--green-line);
   border-radius:6px;padding:18px 24px;text-align:center;
-  font-size:clamp(15px,1.3vw,19px);line-height:1.5;
+  font-size:clamp(15px,1.3cqw,19px);line-height:1.5;
 }
-@media (max-width:620px){.joins::before{left:50%}.joins::after{display:none}}
 
 /* ---------- checklist cards (slides 2 and 8) ---------- */
 .feat.checklist article{padding:24px 26px 26px;gap:16px}
-.feat.checklist h3{font-size:clamp(20px,1.7vw,25px);color:var(--green-line)}
+.feat.checklist h3{font-size:clamp(20px,1.7cqw,25px);color:var(--green-line)}
 .checklist ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:12px}
 .checklist li{
   position:relative;padding-inline-start:20px;
-  font-size:clamp(15px,1.25vw,18px);line-height:1.45;color:var(--ink);
+  font-size:clamp(15px,1.25cqw,18px);line-height:1.45;color:var(--ink);
 }
 .checklist li::before{
   content:"";position:absolute;inset-inline-start:0;top:.55em;
@@ -240,15 +243,15 @@ h3{font-family:"Thmanyah Sans",Arial,sans-serif;font-weight:700;letter-spacing:-
 .goal{
   background:var(--surface);color:var(--ink);
   border-inline-start:5px solid var(--green-line);
-  padding:clamp(16px,1.9vw,26px) clamp(20px,2.4vw,32px);
+  padding:clamp(16px,1.9cqw,26px) clamp(20px,2.4cqw,32px);
   font-family:"Thmanyah Display",Georgia,serif;font-weight:700;
-  font-size:clamp(19px,2.1vw,30px);line-height:1.28;letter-spacing:-.018em;
+  font-size:clamp(19px,2.1cqw,30px);line-height:1.28;letter-spacing:-.018em;
   max-width:none;
 }
 
 /* ---------- fishbone ---------- */
 .fish{overflow:hidden;flex-shrink:0;background:var(--surface);border:1px solid var(--line);padding:8px}
-.fish svg{display:block;width:100%;height:clamp(280px,54vh,660px)}
+.fish svg{display:block;width:100%;height:clamp(280px,54cqh,660px)}
 .fish text{font-family:"Thmanyah Sans",sans-serif}
 
 /* Step-through: ArrowDown walks one bone at a time, then the effect box.
@@ -377,6 +380,8 @@ h3{font-family:"Thmanyah Sans",Arial,sans-serif;font-weight:700;letter-spacing:-
 @media (pointer:coarse){.edge{display:none}}
 
 @media print{
+  .deck{position:static}
+  .stage{position:static;transform:none;width:auto;height:auto;container-type:normal}
   .edge{display:none}
   .slide{height:auto!important;padding:26px!important}
   .frame{height:auto!important;overflow:visible!important;display:block!important}
@@ -397,7 +402,7 @@ h3{font-family:"Thmanyah Sans",Arial,sans-serif;font-weight:700;letter-spacing:-
   box-shadow:0 30px 70px -30px rgba(0,0,0,.55);
 }
 .expanded-inner .fish{border:0;background:transparent;padding:0}
-.expanded-inner .fish svg{height:auto;max-height:78vh}
+.expanded-inner .fish svg{height:auto;max-height:78cqh}
 .close{position:absolute;inset-block-end:12px;inset-inline-end:16px}
 
 
@@ -405,6 +410,6 @@ h3{font-family:"Thmanyah Sans",Arial,sans-serif;font-weight:700;letter-spacing:-
 .team-row{align-self:stretch}
 .team-row{
   display:flex;flex-wrap:wrap;gap:10px 28px;
-  padding-top:clamp(12px,1.4vw,20px);border-top:1px solid var(--line);
+  padding-top:clamp(12px,1.4cqw,20px);border-top:1px solid var(--line);
 }
-.team-row span{font-size:clamp(14px,1.2vw,17px);font-weight:500}
+.team-row span{font-size:clamp(14px,1.2cqw,17px);font-weight:500}
