@@ -9,8 +9,8 @@ export default function Users() {
           primary users take the wider pair, the three stakeholders the
           default three across, which is the hierarchy between them. */}
       <div className="featblock">
-        <h3 className="seclabel">Primary users</h3>
-        <div className="feat pair">
+        <h3 className="seclabel in">Primary users</h3>
+        <div className="feat pair people">
           {PRIMARY_USERS.map((user) => (
             <article key={user.who}>
               <h3>{user.who}</h3>
@@ -21,8 +21,8 @@ export default function Users() {
       </div>
 
       <div className="featblock">
-        <h3 className="seclabel">Supporting stakeholders</h3>
-        <div className="feat">
+        <h3 className="seclabel in">Supporting stakeholders</h3>
+        <div className="feat people">
           {STAKEHOLDERS.map((stakeholder) => (
             <article key={stakeholder.who}>
               <h3>{stakeholder.who}</h3>

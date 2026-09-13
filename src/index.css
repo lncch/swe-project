@@ -160,6 +160,9 @@ h3{font-family:"Thmanyah Sans",Arial,sans-serif;font-weight:700;letter-spacing:-
   padding:19px 24px;font-size:clamp(15px,1.25vw,18px);line-height:1.55;max-width:78ch;
 }
 
+/* slide 4 has no codes on its cards, so the names carry the green */
+.feat.people h3{color:var(--green-line)}
+
 /* ---------- objectives (slide 5) ---------- */
 /* no title on these cards, so the sentence itself takes the title's weight */
 .feat.objectives article{padding:20px 24px 22px}
