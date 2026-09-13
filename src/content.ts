@@ -73,14 +73,14 @@ export const EFFECT: string[] = [
 ];
 
 export const PRIMARY_USERS: Pain[] = [
-  { who: 'Drivers', text: 'Professional drivers (truck, parcel delivery, bus, private, and commercial) seeking new job opportunities post-contract. The platform enables them to browse structured vacancies, submit applications, track application status in real-time, and compare employers.' },
-  { who: 'Companies', text: 'Businesses and recruiters transitioning away from traditional word-of-mouth and manual recruitment methods. The platform allows them to publish detailed, searchable job listings and source qualified local drivers within the Kingdom efficiently.' },
+  { who: 'Drivers', text: 'Professional drivers seeking post-contract roles via structured listings, real-time application tracking, and employer comparisons.' },
+  { who: 'Companies', text: 'Recruiters moving away from manual hiring to publish detailed vacancies and efficiently source verified local drivers.' },
 ];
 
 export const STAKEHOLDERS: Pain[] = [
-  { who: 'HRSD & Ministry of Commerce', text: 'HRSD enforces labor laws and Saudization quotas for recruitment, while the Ministry of Commerce validates company commercial records via Wathq to prevent fraudulent registrations.' },
-  { who: 'Transport General Authority (TGA)', text: 'Sets transport standards, unified driver status, professional licensing categories, and commercial vehicle operating regulations.' },
-  { who: 'Service & Integration Providers', text: 'Core third-party services powering national digital identity (Nafath/Absher), SMS gateways, payment processing, and secure local hosting.' },
+  { who: 'HRSD & Ministry of Commerce', text: 'Enforces labor laws and Saudization quotas, while verifying commercial records via Wathq to prevent fraud.' },
+  { who: 'Transport General Authority (TGA)', text: 'Regulates transport standards, unified driver status, professional licensing, and commercial operations.' },
+  { who: 'Service & Integration Providers', text: 'Provides essential infrastructure including national digital ID (Nafath/Absher), SMS, payments, and local hosting.' },
 ];
 
 export const GOAL =
