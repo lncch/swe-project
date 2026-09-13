@@ -1,11 +1,21 @@
-import PainList from '../components/PainList';
 import { CLOSING } from '../content';
 
 export default function Close() {
   return (
     <>
       <h2>Where this leaves us.</h2>
-      <PainList items={CLOSING} />
+      <div className="feat closing-groups">
+        {CLOSING.map((group) => (
+          <article key={group.title}>
+            <h3>{group.title}</h3>
+            <ul>
+              {group.items.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
     </>
   );
 }

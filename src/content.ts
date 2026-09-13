@@ -121,8 +121,34 @@ export const SCOPE_OUT: ScopeItem[] = [
 ];
 
 
-export const CLOSING: Pain[] = [
-  { who: 'Assumptions', text: 'Users will trust the platform, companies will pay a commission fee for successful hires, and drivers can fill out their own forms.' },
-  { who: 'Constraints', text: 'Need government approvals (HRSD, Ministry of Commerce) and must follow Transport General Authority rules.' },
-  { who: 'Dependencies', text: 'Government APIs (Nafath, Absher, Wathq), payment gateways, and SMS services.' },
+export interface ClosingGroup {
+  title: string;
+  items: string[];
+}
+
+/** Slide 8: each sentence split at its commas, so every point reads as one line. */
+export const CLOSING: ClosingGroup[] = [
+  {
+    title: 'Assumptions',
+    items: [
+      'Users will trust the platform',
+      'Companies will pay a commission fee for successful hires',
+      'Drivers can fill out their own forms',
+    ],
+  },
+  {
+    title: 'Constraints',
+    items: [
+      'Government approvals from HRSD and the Ministry of Commerce',
+      'Must follow Transport General Authority rules',
+    ],
+  },
+  {
+    title: 'Dependencies',
+    items: [
+      'Government APIs: Nafath, Absher and Wathq',
+      'Payment gateways',
+      'SMS services',
+    ],
+  },
 ];

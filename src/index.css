@@ -219,6 +219,19 @@ h3{font-family:"Thmanyah Sans",Arial,sans-serif;font-weight:700;letter-spacing:-
 }
 @media (max-width:620px){.joins::before{left:50%}.joins::after{display:none}}
 
+/* ---------- assumptions, constraints, dependencies (slide 8) ---------- */
+.feat.closing-groups article{padding:24px 26px 26px;gap:16px}
+.feat.closing-groups h3{font-size:clamp(20px,1.7vw,25px);color:var(--green-line)}
+.closing-groups ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:12px}
+.closing-groups li{
+  position:relative;padding-inline-start:20px;
+  font-size:clamp(15px,1.25vw,18px);line-height:1.45;color:var(--ink);
+}
+.closing-groups li::before{
+  content:"";position:absolute;inset-inline-start:0;top:.55em;
+  width:8px;height:8px;border-radius:50%;background:var(--green-line);
+}
+
 /* ---------- goal ---------- */
 /* The sign panel above is already a green fill, so the goal takes slide 2's
    quote treatment instead: the green stays as a rule, the display serif and
