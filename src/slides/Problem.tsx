@@ -5,7 +5,7 @@ export default function Problem() {
     <>
       <h2>Two sides of the same market, and no place where they meet.</h2>
       <div className="quote">There is no single portal in Saudi Arabia for driver recruitment.</div>
-      <div className="feat checklist">
+      <div className="feat pair checklist">
         {PROBLEM_POINTS.map((group) => (
           <article key={group.title}>
             <h3>{group.title}</h3>

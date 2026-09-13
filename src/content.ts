@@ -47,7 +47,7 @@ export const PROBLEM_POINTS: PointGroup[] = [
     items: [
       'Hard to find a job after a contract ends',
       'Disorganized job postings mean longer searches',
-      'Vacancies lack experience, location and salary details',
+      'Little to no information about the company',
     ],
   },
   {
@@ -55,15 +55,8 @@ export const PROBLEM_POINTS: PointGroup[] = [
     items: [
       'Hire through personal networks, their website or ads',
       'Costs more time, money and effort',
-      'May lead to inappropriate hiring',
-    ],
-  },
-  {
-    title: 'Both sides',
-    items: [
       'Little to no detail about the drivers',
-      'Little to no information about the company',
-      'Neither side can judge the other',
+      'May lead to inappropriate hiring',
     ],
   },
 ];
