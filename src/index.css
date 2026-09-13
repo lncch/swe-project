@@ -143,21 +143,12 @@ h3{font-family:"Thmanyah Sans",Arial,sans-serif;font-weight:700;letter-spacing:-
 /* ---------- shared blocks ---------- */
 .cols{display:grid;gap:clamp(16px,2vw,32px);align-items:start}
 .c2{grid-template-columns:repeat(auto-fit,minmax(310px,1fr))}
-.stack{display:flex;flex-direction:column}
 .colhead{font-size:16px;font-weight:700;margin-bottom:6px}
 
-.pain{display:flex;gap:16px;padding:15px 0;border-top:1px solid var(--line)}
-.pain:last-child{border-bottom:1px solid var(--line)}
-.pain .who{
-  font-family:"Thmanyah Sans",Arial,sans-serif;font-weight:700;
-  font-size:15px;color:var(--accent-line);min-width:108px;padding-top:1px;letter-spacing:-.01em;
-}
-.pain .txt{font-size:clamp(14px,1.15vw,16.5px);line-height:1.58;max-width:68ch}
-.pain .txt em{font-style:normal;color:var(--ink);font-weight:600;box-shadow:inset 0 -.42em 0 var(--amber-fill)}
 
 .quote{
   background:var(--surface);border-inline-start:5px solid var(--sign);
-  padding:19px 24px;font-size:clamp(15px,1.25vw,18px);line-height:1.55;max-width:78ch;
+  padding:19px 24px;font-size:clamp(15px,1.25vw,18px);line-height:1.55;
 }
 
 /* ---------- objectives (slide 5) ---------- */
@@ -220,15 +211,15 @@ h3{font-family:"Thmanyah Sans",Arial,sans-serif;font-weight:700;letter-spacing:-
 }
 @media (max-width:620px){.joins::before{left:50%}.joins::after{display:none}}
 
-/* ---------- assumptions, constraints, dependencies (slide 8) ---------- */
-.feat.closing-groups article{padding:24px 26px 26px;gap:16px}
-.feat.closing-groups h3{font-size:clamp(20px,1.7vw,25px);color:var(--green-line)}
-.closing-groups ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:12px}
-.closing-groups li{
+/* ---------- checklist cards (slides 2 and 8) ---------- */
+.feat.checklist article{padding:24px 26px 26px;gap:16px}
+.feat.checklist h3{font-size:clamp(20px,1.7vw,25px);color:var(--green-line)}
+.checklist ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:12px}
+.checklist li{
   position:relative;padding-inline-start:20px;
   font-size:clamp(15px,1.25vw,18px);line-height:1.45;color:var(--ink);
 }
-.closing-groups li::before{
+.checklist li::before{
   content:"";position:absolute;inset-inline-start:0;top:.55em;
   width:8px;height:8px;border-radius:50%;background:var(--green-line);
 }

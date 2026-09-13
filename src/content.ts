@@ -6,11 +6,14 @@ export interface Member {
   role: string;
 }
 
+export interface PointGroup {
+  title: string;
+  items: string[];
+}
+
 export interface Pain {
   who: string;
   text: string;
-  /** Words to emphasise, matched verbatim inside `text`. */
-  stress?: string;
 }
 
 export interface Feature {
@@ -37,21 +40,31 @@ export const TEAM: Member[] = [
   { name: 'Mohammed Al Ghalib', role: 'Identification, introduction, proposed system' },
 ];
 
-export const PROBLEM_PAINS: Pain[] = [
+/** Slide 2: the report's problem statement, one short point per line. */
+export const PROBLEM_POINTS: PointGroup[] = [
   {
-    who: 'Drivers',
-    text: 'Finding a suitable job after a contract ends is difficult, and disorganized job postings mean a driver spends longer looking. Vacancies rarely say enough about needs, experience, location or salary to judge.',
-    stress: 'disorganized job postings',
+    title: 'Drivers',
+    items: [
+      'Hard to find a job after a contract ends',
+      'Disorganized job postings mean longer searches',
+      'Vacancies lack experience, location and salary details',
+    ],
   },
   {
-    who: 'Companies',
-    text: 'Hiring runs on relationship networks, a company website, or an advertisement medium. That requires more time, money and effort, and may lead to inappropriate hiring.',
-    stress: 'more time, money and effort',
+    title: 'Companies',
+    items: [
+      'Hire through personal networks, their website or ads',
+      'Costs more time, money and effort',
+      'May lead to inappropriate hiring',
+    ],
   },
   {
-    who: 'Both sides',
-    text: 'Existing platforms provide little to no detail about the drivers, and drivers have little to no information about the company. Neither side can judge the other.',
-    stress: 'little to no detail about the drivers',
+    title: 'Both sides',
+    items: [
+      'Little to no detail about the drivers',
+      'Little to no information about the company',
+      'Neither side can judge the other',
+    ],
   },
 ];
 
@@ -121,13 +134,8 @@ export const SCOPE_OUT: ScopeItem[] = [
 ];
 
 
-export interface ClosingGroup {
-  title: string;
-  items: string[];
-}
-
 /** Slide 8: each sentence split at its commas, so every point reads as one line. */
-export const CLOSING: ClosingGroup[] = [
+export const CLOSING: PointGroup[] = [
   {
     title: 'Assumptions',
     items: [
