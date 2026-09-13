@@ -10,17 +10,13 @@ export default function Goal() {
         <table>
           <thead>
             <tr>
-              <th style={{ width: 74 }}>ID</th>
-              <th style={{ width: '38%' }}>Objective</th>
-              <th>How we will know it worked</th>
+              <th>Objective</th>
             </tr>
           </thead>
           <tbody>
-            {OBJECTIVES.map((o) => (
-              <tr key={o.id}>
-                <td className="id">{o.id}</td>
-                <td>{o.objective}</td>
-                <td className="m">{o.indicator}</td>
+            {OBJECTIVES.map((objective) => (
+              <tr key={objective}>
+                <td>{objective}</td>
               </tr>
             ))}
           </tbody>

@@ -13,12 +13,6 @@ export interface Pain {
   stress?: string;
 }
 
-export interface Objective {
-  id: `OBJ-${number}`;
-  objective: string;
-  indicator: string;
-}
-
 export interface Feature {
   id: `IN-0${number}`;
   title: string;
@@ -93,14 +87,11 @@ export const GOAL =
   'Connect companies that need professional drivers with those already in Saudi Arabia, through a trusted platform.';
 
 
-export const OBJECTIVES: Objective[] = [
-  { id: 'OBJ-1', objective: 'To provide a specialized employment platform for professional drivers.', indicator: 'Increase in the total number of active driver profiles and establishments registering on the platform.' },
-  { id: 'OBJ-2', objective: 'To facilitate the process of finding a new driving job for drivers.', indicator: 'Higher percentage of driver profiles who have submitted at least one job application after doing a search session.' },
-  { id: 'OBJ-3', objective: 'To assist companies and establishments to look for new drivers living in Saudi Arabia rather than recruiting from outside the Kingdom.', indicator: 'Increase in the number of filled positions given to drivers already in the Kingdom, out of total portal hiring placements.' },
-  { id: 'OBJ-4', objective: 'To enable companies to create detailed and searchable driver vacancies.', indicator: 'Rising rate of published job listings that fully abide by all required structured data fields.' },
-  { id: 'OBJ-5', objective: 'To reduce the time for companies and establishments to hire drivers with the desired qualifications.', indicator: 'Reducing the time to hire by at least 30% of the time elapsed in traditional hiring methods.' },
-  { id: 'OBJ-6', objective: 'To allow drivers to submit and track job applications.', indicator: 'All submitted applications can be observed in real-time status updates on the platform.' },
-  { id: 'OBJ-7', objective: 'To reduce unsuitable applications by presenting requirements clearly before a driver applies.', indicator: 'Reducing the rate of job application criteria that get misunderstood by drivers while applying via the platform.' },
+export const OBJECTIVES: string[] = [
+  'To assist companies and establishments to look for new drivers living in Saudi Arabia rather than recruiting from outside the Kingdom.',
+  'To enable companies to create detailed and searchable driver vacancies.',
+  'To reduce the time for companies and establishments to hire drivers with the desired qualifications.',
+  'To reduce unsuitable applications by presenting requirements clearly before a driver applies.',
 ];
 
 export const FEATURES: Feature[] = [

@@ -169,9 +169,6 @@ thead th{
   color:var(--ink);background:var(--sunk);position:sticky;top:0;letter-spacing:-.005em;
 }
 tbody tr:last-child td{border-bottom:0}
-td.id{font-family:"Thmanyah Sans",Arial,sans-serif;font-weight:700;font-size:14px;
-      color:var(--accent-line);white-space:nowrap;font-variant-numeric:tabular-nums}
-td.m{color:var(--muted)}
 
 /* ---------- scope ---------- */
 .item{display:flex;gap:13px;padding:11px 0;border-top:1px solid var(--line);font-size:15px;line-height:1.5}
@@ -372,7 +369,6 @@ td.m{color:var(--muted)}
 .expanded-inner .tbl-wrap{border:0}
 .expanded-inner table{min-width:820px}
 .expanded-inner th,.expanded-inner td{font-size:17px;padding:13px 18px}
-.expanded-inner td.id{font-size:16px}
 .close{position:absolute;inset-block-end:12px;inset-inline-end:16px}
 
 
