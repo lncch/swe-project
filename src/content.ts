@@ -99,7 +99,7 @@ export interface Objective {
 }
 
 export const OBJECTIVES: Objective[] = [
-  { id: 'OBJ-1', text: 'To assist companies and establishments to look for new drivers living in Saudi Arabia rather than recruiting from outside the Kingdom.' },
+  { id: 'OBJ-1', text: 'To help companies hire drivers already in Saudi Arabia, not from abroad.' },
   { id: 'OBJ-2', text: 'To enable companies to create detailed and searchable driver vacancies.' },
   { id: 'OBJ-3', text: 'To reduce the time for companies and establishments to hire drivers with the desired qualifications.' },
   { id: 'OBJ-4', text: 'To reduce unsuitable applications by presenting requirements clearly before a driver applies.' },
