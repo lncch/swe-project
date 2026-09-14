@@ -35,9 +35,9 @@ export interface Cause {
 
 export const TEAM: Member[] = [
   { name: 'Almoayyad Abuljdail', role: 'Team leader · organization, slides, integration, submission' },
-  { name: 'Elyas Babour', role: 'Goals, system boundary, included and excluded features' },
-  { name: 'Ibrahim Alyami', role: 'Problem, objectives, root causes, assumptions, constraints' },
   { name: 'Mohammed Al Ghalib', role: 'Identification, introduction, proposed system' },
+  { name: 'Ibrahim Alyami', role: 'Problem, objectives, root causes, assumptions, constraints' },
+  { name: 'Elyas Babour', role: 'Goals, system boundary, included and excluded features' },
 ];
 
 /** Slide 2: the report's problem statement, one short point per line. */
