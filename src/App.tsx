@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from 'react';
+import { useEffect, useLayoutEffect, useRef } from 'react';
 import ControlBar from './components/ControlBar';
 import HelpOverlay from './components/HelpOverlay';
 import Slide from './components/Slide';
@@ -16,6 +16,11 @@ export default function App() {
     helpOpen, toggleHelp,
     fullscreen, toggleFullscreen,
   } = useDeck();
+
+  // Styles key off this so the control bar can step aside while presenting.
+  useEffect(() => {
+    document.documentElement.toggleAttribute('data-fullscreen', fullscreen);
+  }, [fullscreen]);
 
   const deck = useRef<HTMLDivElement>(null);
   const stage = useRef<HTMLDivElement>(null);

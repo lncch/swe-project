@@ -285,6 +285,25 @@ h3{font-family:"Thmanyah Sans",Arial,sans-serif;font-weight:700;letter-spacing:-
   display:flex;align-items:center;gap:18px;padding:9px clamp(16px,3vw,30px);
 }
 .lane{position:absolute;top:-1px;inset-inline-start:0;height:3px;background:var(--sign);transition:width .3s cubic-bezier(.2,.7,.3,1)}
+/* Fullscreen: the slides take the whole screen and the bar fades out, leaving
+   only the progress line along the bottom edge. Pointing at the bottom of the
+   screen, or tabbing into the bar, brings it back. */
+:root[data-fullscreen] .deck{bottom:0}
+:root[data-fullscreen] .bar{
+  background:transparent;border-top-color:transparent;backdrop-filter:none;
+  transition:background .2s, border-color .2s;
+}
+:root[data-fullscreen] .bar > :not(.lane){opacity:0;transition:opacity .2s}
+:root[data-fullscreen] .lane{top:auto;bottom:0}
+:root[data-fullscreen] .bar:hover,
+:root[data-fullscreen] .bar:focus-within{
+  background:color-mix(in srgb,var(--ground) 93%, transparent);
+  border-top-color:var(--line);backdrop-filter:blur(9px);
+}
+:root[data-fullscreen] .bar:hover > *,
+:root[data-fullscreen] .bar:focus-within > *{opacity:1}
+:root[data-fullscreen] .bar:hover .lane,
+:root[data-fullscreen] .bar:focus-within .lane{top:-1px;bottom:auto}
 .dots{display:flex;gap:6px}
 .dots button{
   width:10px;height:10px;padding:0;border-radius:50%;
