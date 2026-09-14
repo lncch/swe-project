@@ -1,35 +1,36 @@
+import type { PointGroup } from '../content';
 import { PRIMARY_USERS, STAKEHOLDERS } from '../content';
+
+function Cards({ groups, layout }: { groups: PointGroup[]; layout: string }) {
+  return (
+    <div className={`feat checklist plain ${layout}`}>
+      {groups.map((group) => (
+        <article key={group.title}>
+          <h3>{group.title}</h3>
+          <ul>
+            {group.items.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+  );
+}
 
 export default function Users() {
   return (
     <>
       <h2>Users and stakeholders</h2>
 
-      {/* Slides 6 and 7 card treatment, so the deck has one card. The two
-          primary users take the wider pair, the three stakeholders the
-          default three across, which is the hierarchy between them. */}
       <div className="featblock">
         <h3 className="seclabel in">Primary users</h3>
-        <div className="feat pair">
-          {PRIMARY_USERS.map((user) => (
-            <article key={user.who}>
-              <h3>{user.who}</h3>
-              <p>{user.text}</p>
-            </article>
-          ))}
-        </div>
+        <Cards groups={PRIMARY_USERS} layout="pair" />
       </div>
 
       <div className="featblock">
         <h3 className="seclabel in">Supporting stakeholders</h3>
-        <div className="feat">
-          {STAKEHOLDERS.map((stakeholder) => (
-            <article key={stakeholder.who}>
-              <h3>{stakeholder.who}</h3>
-              <p>{stakeholder.text}</p>
-            </article>
-          ))}
-        </div>
+        <Cards groups={STAKEHOLDERS} layout="" />
       </div>
     </>
   );

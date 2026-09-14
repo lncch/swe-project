@@ -11,11 +11,6 @@ export interface PointGroup {
   items: string[];
 }
 
-export interface Pain {
-  who: string;
-  text: string;
-}
-
 export interface Feature {
   id: `IN-0${number}`;
   title: string;
@@ -78,15 +73,54 @@ export const EFFECT: string[] = [
   'reliably find each other.',
 ];
 
-export const PRIMARY_USERS: Pain[] = [
-  { who: 'Drivers', text: 'Professional drivers seeking post-contract roles via structured listings, real-time application tracking, and employer comparisons.' },
-  { who: 'Companies', text: 'Recruiters moving away from manual hiring to publish detailed vacancies and efficiently source verified local drivers.' },
+/** Slide 4: each description split into its parts, one per line. */
+export const PRIMARY_USERS: PointGroup[] = [
+  {
+    title: 'Drivers',
+    items: [
+      'Seeking new roles after a contract ends',
+      'Structured job listings',
+      'Real-time application tracking',
+      'Employer comparisons',
+    ],
+  },
+  {
+    title: 'Companies',
+    items: [
+      'Moving away from manual hiring',
+      'Publish detailed vacancies',
+      'Source verified local drivers',
+    ],
+  },
 ];
 
-export const STAKEHOLDERS: Pain[] = [
-  { who: 'HRSD & Ministry of Commerce', text: 'Enforces labor laws and Saudization quotas, while verifying commercial records via Wathq to prevent fraud.' },
-  { who: 'Transport General Authority (TGA)', text: 'Regulates transport standards, unified driver status, professional licensing, and commercial operations.' },
-  { who: 'Service & Integration Providers', text: 'Provides essential infrastructure including national digital ID (Nafath/Absher), SMS, payments, and local hosting.' },
+export const STAKEHOLDERS: PointGroup[] = [
+  {
+    title: 'HRSD & Ministry of Commerce',
+    items: [
+      'Labor laws and Saudization quotas',
+      'Verify commercial records via Wathq',
+      'Prevent fraudulent companies',
+    ],
+  },
+  {
+    title: 'Transport General Authority',
+    items: [
+      'Transport standards',
+      'Unified driver status',
+      'Professional licensing',
+      'Commercial operations',
+    ],
+  },
+  {
+    title: 'Service providers',
+    items: [
+      'Digital ID: Nafath and Absher',
+      'SMS',
+      'Payments',
+      'Local hosting',
+    ],
+  },
 ];
 
 export const GOAL =
