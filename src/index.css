@@ -237,8 +237,6 @@ h3{font-family:"Thmanyah Sans",Arial,sans-serif;font-weight:700;letter-spacing:-
   content:"";position:absolute;inset-inline-start:0;top:.55em;
   width:8px;height:8px;border-radius:50%;background:var(--green-line);
 }
-/* slide 4 keeps its card names white; only its section labels are green */
-.feat.checklist.plain h3{color:var(--ink)}
 
 /* ---------- goal ---------- */
 /* The sign panel above is already a green fill, so the goal takes slide 2's
