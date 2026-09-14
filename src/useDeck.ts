@@ -16,12 +16,17 @@ export function useDeck() {
   const [helpOpen, setHelpOpen] = useState(false);
   const [fullscreen, setFullscreen] = useState(false);
 
+  // How the current slide was reached, read by slides that keep inner steps:
+  // stepping back into the fishbone lands on its last step, anything else on
+  // its full view. Set before the render so it is there when the slide turns on.
   const go = useCallback((n: number) => {
+    document.documentElement.dataset.enter = 'jump';
     setIndex(Math.max(0, Math.min(SLIDES.length - 1, n)));
     window.scrollTo(0, 0);
   }, []);
 
   const step = useCallback((delta: number) => {
+    document.documentElement.dataset.enter = delta < 0 ? 'back' : 'forward';
     setIndex((i) => Math.max(0, Math.min(SLIDES.length - 1, i + delta)));
     window.scrollTo(0, 0);
   }, []);

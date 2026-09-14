@@ -98,14 +98,17 @@ export default function Fishbone() {
     return () => window.removeEventListener('keydown', onKey);
   }, []);
 
-  // Leaving the slide puts the diagram back to its full view. The deck moves
-  // with history.replaceState, which fires no hashchange, so this watches the
+  // Arriving by stepping back from the next slide resumes at the last step, the
+  // effect; any other arrival starts from the full view. The deck moves with
+  // history.replaceState, which fires no hashchange, so this watches the
   // slide's own "on" class instead.
   useEffect(() => {
     const slide = rootRef.current?.closest('.slide');
     if (!slide) return;
     const observer = new MutationObserver(() => {
-      if (!slide.classList.contains('on')) setFocusIndex(-1);
+      if (!slide.classList.contains('on')) return;
+      const back = document.documentElement.dataset.enter === 'back';
+      setFocusIndex(back ? EFFECT_INDEX : -1);
     });
     observer.observe(slide, { attributes: true, attributeFilter: ['class'] });
     return () => observer.disconnect();
