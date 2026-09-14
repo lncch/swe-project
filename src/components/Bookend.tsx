@@ -24,6 +24,7 @@ export default function Bookend({ children }: { children: ReactNode }) {
 
       <div className="credits">
         <span>Software Engineering group project</span>
+        <span>Innovation, Group 3 · Section CS1</span>
         <span>Dr. Abdulaziz Attaallah</span>
       </div>
     </div>
