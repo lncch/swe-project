@@ -6,7 +6,7 @@ export default function Goal() {
       <div className="goal">{GOAL}</div>
 
       <div className="featblock">
-        <h3 className="seclabel in">Objectives</h3>
+        <h3 className="seclabel in">Main objectives</h3>
         <div className="feat pair objectives">
           {OBJECTIVES.map((o) => (
             <article key={o.id}>
