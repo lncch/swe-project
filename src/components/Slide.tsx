@@ -78,6 +78,9 @@ export default function Slide({ active, number, sign, children }: Props) {
       b.style.transform = `scale(${applied})`;
       // A slide held back by its width leaves height over; share it above and below.
       b.style.marginTop = `${Math.max(0, (availH - settled * applied) / 2)}px`;
+      // When height is the limit, applied < s and the content ends short of the
+      // frame's right edge. The logo row takes the same inset, so both end together.
+      f.parentElement?.style.setProperty('--content-inset', `${f.clientWidth * (1 - applied / s)}px`);
     };
 
     fit();
