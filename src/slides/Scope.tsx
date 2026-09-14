@@ -6,7 +6,7 @@ export default function Scope() {
       <h2>An intermediate between drivers and companies, nothing more.</h2>
 
       <div className="featblock">
-        <h3 className="seclabel in">Included features</h3>
+        <h3 className="seclabel in">Main included features</h3>
         <div className="feat four">
           {FEATURES.map((f) => (
             <article key={f.id}>
@@ -19,7 +19,7 @@ export default function Scope() {
       </div>
 
       <div className="featblock">
-        <h3 className="seclabel out">Excluded features</h3>
+        <h3 className="seclabel out">Main excluded features</h3>
         <div className="feat four out-cards">
           {SCOPE_OUT.map((s) => (
             <article key={s.id}>
