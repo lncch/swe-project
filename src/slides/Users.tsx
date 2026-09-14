@@ -1,13 +1,21 @@
-import { PRIMARY_USERS, STAKEHOLDERS } from '../content';
+import absher from '../assets/stakeholders/absher.svg';
+import hrsd from '../assets/stakeholders/hrsd.svg';
+import moc from '../assets/stakeholders/moc.svg';
+import nafath from '../assets/stakeholders/nafath.svg';
+import { PRIMARY_USERS } from '../content';
+
+const STAKEHOLDER_LOGOS = [
+  { src: moc, name: 'Ministry of Commerce' },
+  { src: hrsd, name: 'Ministry of Human Resources and Social Development' },
+  { src: absher, name: 'Absher' },
+  { src: nafath, name: 'Nafath' },
+];
 
 export default function Users() {
   return (
     <>
       <h2>Users and stakeholders</h2>
 
-      {/* Slides 6 and 7 card treatment, so the deck has one card. The two
-          primary users take the wider pair, the three stakeholders the
-          default three across, which is the hierarchy between them. */}
       <div className="featblock">
         <h3 className="seclabel in">Primary users</h3>
         <div className="feat pair">
@@ -22,12 +30,11 @@ export default function Users() {
 
       <div className="featblock">
         <h3 className="seclabel in">Supporting stakeholders</h3>
-        <div className="feat">
-          {STAKEHOLDERS.map((stakeholder) => (
-            <article key={stakeholder.who}>
-              <h3>{stakeholder.who}</h3>
-              <p>{stakeholder.text}</p>
-            </article>
+        <div className="logos">
+          {STAKEHOLDER_LOGOS.map((logo) => (
+            <figure key={logo.name}>
+              <img src={logo.src} alt={logo.name} />
+            </figure>
           ))}
         </div>
       </div>

@@ -83,12 +83,6 @@ export const PRIMARY_USERS: Pain[] = [
   { who: 'Companies', text: 'Recruiters moving away from manual hiring to publish detailed vacancies and efficiently source verified local drivers.' },
 ];
 
-export const STAKEHOLDERS: Pain[] = [
-  { who: 'HRSD & Ministry of Commerce', text: 'Enforces labor laws and Saudization quotas, while verifying commercial records via Wathq to prevent fraud.' },
-  { who: 'Transport General Authority (TGA)', text: 'Regulates transport standards, unified driver status, professional licensing, and commercial operations.' },
-  { who: 'Service & Integration Providers', text: 'Provides essential infrastructure including national digital ID (Nafath/Absher), SMS, payments, and local hosting.' },
-];
-
 export const GOAL =
   'Connect companies that need professional drivers with those already in Saudi Arabia, through a trusted platform.';
 
