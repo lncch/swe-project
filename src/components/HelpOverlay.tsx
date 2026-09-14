@@ -1,6 +1,6 @@
 const KEYS: [string, string][] = [
-  ['→  space', 'Next slide'],
-  ['←', 'Previous slide'],
+  ['→ ↓  space', 'Next'],
+  ['← ↑', 'Back'],
   ['F', 'Fullscreen'],
   ['B', 'Blank the screen'],
   ['P', 'Print, or save as PDF'],
@@ -20,8 +20,9 @@ export default function HelpOverlay({ onClose }: { onClose: () => void }) {
             </div>
           ))}
         </dl>
-              <p className="note">Scroll to move between slides, or swipe left and right on a
-        touchscreen. The URL tracks the slide, so a reload keeps your place.</p>
+              <p className="note">Scrolling and swiping move the same way. On the fishbone, each
+        step zooms into the next cause before the deck moves on. The URL tracks the slide,
+        so a reload keeps your place.</p>
         <button type="button" className="btn" onClick={onClose}>Close</button>
       </div>
     </div>

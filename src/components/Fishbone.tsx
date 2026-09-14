@@ -49,10 +49,11 @@ export default function Fishbone() {
   const focusRef = useRef(focusIndex);
   focusRef.current = focusIndex;
 
-  // Scrolling walks the bones like ArrowDown/ArrowUp. Past either end the
-  // gesture is left alone, so the deck turns to the next or previous slide.
+  // Every way of moving forward or back (arrow keys, space, page keys, wheel,
+  // swipe) walks the bones first. Past either end the step is left alone, so
+  // the deck turns to the next or previous slide.
   useEffect(() => {
-    function onDeckWheel(e: Event) {
+    function onDeckStep(e: Event) {
       const root = rootRef.current;
       if (!root?.closest('.slide.on')) return;
       const dir = (e as CustomEvent<number>).detail;
@@ -65,36 +66,32 @@ export default function Fishbone() {
         setFocusIndex(current - 1);
       }
     }
-    window.addEventListener('deck:wheel', onDeckWheel);
-    return () => window.removeEventListener('deck:wheel', onDeckWheel);
+    window.addEventListener('deck:step', onDeckStep);
+    return () => window.removeEventListener('deck:step', onDeckStep);
   }, []);
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       if (e.metaKey || e.ctrlKey || e.altKey) return;
-      if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp' && e.key !== 'Escape') return;
-
       const root = rootRef.current;
       if (!root) return;
 
-      const isExpandedDiagram = Boolean(root.closest('.expanded-inner'));
-      const isActiveSlideDiagram = Boolean(root.closest('.slide.on'));
-      if (document.body.dataset.overlay && !isExpandedDiagram) return;
-      if (!isExpandedDiagram && !isActiveSlideDiagram) return;
-
-      if (e.key === 'ArrowDown') {
-        e.preventDefault();
-        setFocusIndex((current) => Math.min(EFFECT_INDEX, current + 1));
+      // On the slide, the deck's step event drives the walk. Only Escape is
+      // handled here, to jump back to the full view.
+      if (root.closest('.slide.on') && !document.body.dataset.overlay) {
+        if (e.key === 'Escape') setFocusIndex(-1);
+        return;
       }
 
-      if (e.key === 'ArrowUp') {
-        e.preventDefault();
-        setFocusIndex((current) => Math.max(-1, current - 1));
-      }
-
-      if (e.key === 'Escape' && !document.body.dataset.overlay) {
-        setFocusIndex(-1);
-      }
+      // The full-screen copy has the keyboard to itself, since the deck
+      // ignores keys while it is open, so it takes the same keys directly.
+      if (!root.closest('.expanded-inner')) return;
+      const forward = ['ArrowRight', 'ArrowDown', ' ', 'PageDown'].includes(e.key);
+      const back = ['ArrowLeft', 'ArrowUp', 'PageUp'].includes(e.key);
+      if (!forward && !back) return;
+      e.preventDefault();
+      e.stopPropagation();
+      setFocusIndex((current) => Math.max(-1, Math.min(EFFECT_INDEX, current + (forward ? 1 : -1))));
     }
 
     window.addEventListener('keydown', onKey);

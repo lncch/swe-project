@@ -26,6 +26,14 @@ export function useDeck() {
     window.scrollTo(0, 0);
   }, []);
 
+  /** Keys, wheel and swipe all move through this. A slide with steps of its
+      own (the fishbone walk) gets first refusal: it cancels the deck:step
+      event while it still has a step to take in that direction. */
+  const advance = useCallback((dir: 1 | -1) => {
+    const turn = new CustomEvent<number>('deck:step', { detail: dir, cancelable: true });
+    if (window.dispatchEvent(turn)) step(dir);
+  }, [step]);
+
   const toggleFullscreen = useCallback(() => {
     if (document.fullscreenElement) void document.exitFullscreen();
     else void document.documentElement.requestFullscreen().catch(() => undefined);
@@ -79,15 +87,17 @@ export function useDeck() {
       if (document.body.dataset.overlay && e.key !== 'Escape') return;
       switch (e.key) {
         case 'ArrowRight':
+        case 'ArrowDown':
         case ' ':
         case 'PageDown':
           e.preventDefault();
-          step(1);
+          advance(1);
           break;
         case 'ArrowLeft':
+        case 'ArrowUp':
         case 'PageUp':
           e.preventDefault();
-          step(-1);
+          advance(-1);
           break;
         case 'Home':
           go(0);
@@ -118,7 +128,7 @@ export function useDeck() {
     }
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [go, step, toggleFullscreen]);
+  }, [go, advance, toggleFullscreen]);
 
   /* Wheel and trackpad: one slide per gesture.
      A trackpad flick fires dozens of events with a decaying delta, so the
@@ -171,10 +181,7 @@ export function useDeck() {
       const dir = travel > 0 ? 1 : -1;
       locked = true;
       travel = 0;
-      // Anything on the slide with steps of its own (the fishbone walk) gets
-      // the gesture first, and cancels this event to keep the slide in place.
-      const turn = new CustomEvent<number>('deck:wheel', { detail: dir, cancelable: true });
-      if (window.dispatchEvent(turn)) step(dir);
+      advance(dir);
     }
 
     window.addEventListener('wheel', onWheel, { passive: false });
@@ -182,7 +189,7 @@ export function useDeck() {
       if (settle !== undefined) window.clearTimeout(settle);
       window.removeEventListener('wheel', onWheel);
     };
-  }, [step]);
+  }, [advance]);
 
   /* Swipe, for presenting from a phone or tablet. */
   const touchStart = useRef<number | null>(null);
@@ -197,7 +204,7 @@ export function useDeck() {
       if (from === null || to === undefined) return;
       const travel = to - from;
       if (Math.abs(travel) < SWIPE_THRESHOLD) return;
-      step(travel < 0 ? 1 : -1);
+      advance(travel < 0 ? 1 : -1);
     };
     window.addEventListener('touchstart', onStart, { passive: true });
     window.addEventListener('touchend', onEnd, { passive: true });
@@ -205,7 +212,7 @@ export function useDeck() {
       window.removeEventListener('touchstart', onStart);
       window.removeEventListener('touchend', onEnd);
     };
-  }, [step]);
+  }, [advance]);
 
   return {
     index,
