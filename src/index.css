@@ -166,10 +166,6 @@ h3{font-family:"Thmanyah Sans",Arial,sans-serif;font-weight:700;letter-spacing:-
 .colhead{font-size:16px;font-weight:700;margin-bottom:6px}
 
 
-.quote{
-  background:var(--surface);border-inline-start:5px solid var(--sign);
-  padding:19px 24px;font-size:clamp(15px,1.25cqw,18px);line-height:1.55;
-}
 
 /* ---------- objectives (slide 5) ---------- */
 /* no title on these cards, so the sentence itself takes the title's weight */
