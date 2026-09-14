@@ -1,11 +1,11 @@
 name: Deploy deck to GitHub Pages
 
-# Two versions share one Pages site: main at the root, the v2 branch under
-# /v2/. Only main may deploy to github-pages, so a push to v2 asks main's run
-# to rebuild both instead of deploying itself.
+# Every version shares one Pages site: main at the root, and each branch named
+# v-something under /<branch>/. Only main may deploy to github-pages, so a push
+# to a version branch asks main's run to rebuild them all instead.
 on:
   push:
-    branches: [main, v2]
+    branches: [main, 'v*']
   workflow_dispatch:
 
 permissions:
@@ -14,13 +14,9 @@ permissions:
   id-token: write
   actions: write
 
-concurrency:
-  group: pages
-  cancel-in-progress: true
-
 jobs:
   hand-off:
-    if: github.ref == 'refs/heads/v2'
+    if: github.ref != 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - run: gh workflow run deploy.yml --ref main --repo "$GITHUB_REPOSITORY"
@@ -29,9 +25,15 @@ jobs:
 
   build:
     if: github.ref == 'refs/heads/main'
+    # only the builds queue up; a hand-off must never be cancelled before it asks
+    concurrency:
+      group: pages
+      cancel-in-progress: true
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -40,13 +42,13 @@ jobs:
       - run: npm run build
 
       # vite.config.ts uses base './', so the same build works from a subfolder
-      - uses: actions/checkout@v4
-        with:
-          ref: v2
-          path: v2src
-      - run: npm ci && npm run build
-        working-directory: v2src
-      - run: cp -R v2src/dist dist/v2
+      - name: Build every version branch into its own folder
+        run: |
+          for branch in $(git ls-remote --heads origin 'v*' | sed 's#.*refs/heads/##'); do
+            git worktree add "../src-$branch" "origin/$branch"
+            (cd "../src-$branch" && npm ci && npm run build)
+            cp -R "../src-$branch/dist" "dist/$branch"
+          done
 
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
