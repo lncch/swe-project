@@ -45,6 +45,29 @@ export default function Fishbone() {
   const rootRef = useRef<HTMLDivElement>(null);
   const [focusIndex, setFocusIndex] = useState(-1);
   const stageStyle = useMemo(() => ({ transform: focusTransform(focusIndex) }), [focusIndex]);
+  // the wheel listener reads the step without re-subscribing on every change
+  const focusRef = useRef(focusIndex);
+  focusRef.current = focusIndex;
+
+  // Scrolling walks the bones like ArrowDown/ArrowUp. Past either end the
+  // gesture is left alone, so the deck turns to the next or previous slide.
+  useEffect(() => {
+    function onDeckWheel(e: Event) {
+      const root = rootRef.current;
+      if (!root?.closest('.slide.on')) return;
+      const dir = (e as CustomEvent<number>).detail;
+      const current = focusRef.current;
+      if (dir > 0 && current < EFFECT_INDEX) {
+        e.preventDefault();
+        setFocusIndex(current + 1);
+      } else if (dir < 0 && current > -1) {
+        e.preventDefault();
+        setFocusIndex(current - 1);
+      }
+    }
+    window.addEventListener('deck:wheel', onDeckWheel);
+    return () => window.removeEventListener('deck:wheel', onDeckWheel);
+  }, []);
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
@@ -78,10 +101,17 @@ export default function Fishbone() {
     return () => window.removeEventListener('keydown', onKey);
   }, []);
 
+  // Leaving the slide puts the diagram back to its full view. The deck moves
+  // with history.replaceState, which fires no hashchange, so this watches the
+  // slide's own "on" class instead.
   useEffect(() => {
-    const reset = () => setFocusIndex(-1);
-    window.addEventListener('hashchange', reset);
-    return () => window.removeEventListener('hashchange', reset);
+    const slide = rootRef.current?.closest('.slide');
+    if (!slide) return;
+    const observer = new MutationObserver(() => {
+      if (!slide.classList.contains('on')) setFocusIndex(-1);
+    });
+    observer.observe(slide, { attributes: true, attributeFilter: ['class'] });
+    return () => observer.disconnect();
   }, []);
 
   return (

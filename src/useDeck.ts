@@ -168,9 +168,13 @@ export function useDeck() {
       if (locked) return;
       travel += delta;
       if (Math.abs(travel) < THRESHOLD) return;
-      step(travel > 0 ? 1 : -1);
+      const dir = travel > 0 ? 1 : -1;
       locked = true;
       travel = 0;
+      // Anything on the slide with steps of its own (the fishbone walk) gets
+      // the gesture first, and cancels this event to keep the slide in place.
+      const turn = new CustomEvent<number>('deck:wheel', { detail: dir, cancelable: true });
+      if (window.dispatchEvent(turn)) step(dir);
     }
 
     window.addEventListener('wheel', onWheel, { passive: false });
