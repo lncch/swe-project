@@ -113,7 +113,7 @@ export const SHARED =
 
 export const FEATURES: Feature[] = [
   { id: 'IN-01', title: 'Registration & verification', rationale: "Checking drivers' IDs and company data to ensure the safety and trustworthiness of the platform." },
-  { id: 'IN-02', title: 'Job management', rationale: 'Enabling companies to publish information on job characteristics, compensation and benefits.' },
+  { id: 'IN-02', title: 'Job posting management', rationale: 'Enabling companies to publish information on job characteristics, compensation and benefits.' },
   { id: 'IN-03', title: 'Search & job matching', rationale: 'Filtering jobs according to licence type, location, experience and vehicle category.' },
   { id: 'IN-04', title: 'Application tracking', rationale: 'Drivers save jobs, track the jobs applied for, and receive notifications, while companies manage the candidates.' },
 ];
