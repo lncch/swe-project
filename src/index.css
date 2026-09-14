@@ -192,6 +192,8 @@ h3{font-family:"Thmanyah Sans",Arial,sans-serif;font-weight:700;letter-spacing:-
 .feat.pair{grid-template-columns:repeat(2,1fr)}
 
 /* slide 7's included and excluded rows, four cards across each */
+/* short one-line descriptions, so they can be set larger and brighter */
+.feat.four p{font-size:16px;line-height:1.45;color:var(--ink);opacity:.82}
 .feat.four{grid-template-columns:repeat(4,1fr)}
 .feat.out-cards .k{color:var(--brick)}
 

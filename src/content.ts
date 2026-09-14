@@ -146,18 +146,18 @@ export const SHARED =
   'Both use the same database and backend services, so each side sees the same data.';
 
 export const FEATURES: Feature[] = [
-  { id: 'IN-01', title: 'Registration & verification', rationale: "Checking drivers' IDs and company data to ensure the safety and trustworthiness of the platform." },
-  { id: 'IN-02', title: 'Job management', rationale: 'Enabling companies to publish information on job characteristics, compensation and benefits.' },
-  { id: 'IN-03', title: 'Search & job matching', rationale: 'Filtering jobs according to licence type, location, experience and vehicle category.' },
-  { id: 'IN-04', title: 'Application tracking', rationale: 'Drivers save jobs, track the jobs applied for, and receive notifications, while companies manage the candidates.' },
+  { id: 'IN-01', title: 'Registration & verification', rationale: 'Checks driver IDs and company data so the platform is safe to trust.' },
+  { id: 'IN-02', title: 'Job management', rationale: 'Companies publish the job, its pay and its benefits.' },
+  { id: 'IN-03', title: 'Search & job matching', rationale: 'Filter by licence, location, experience and vehicle.' },
+  { id: 'IN-04', title: 'Application tracking', rationale: 'Drivers track applications. Companies manage candidates.' },
 ];
 
 
 export const SCOPE_OUT: ScopeItem[] = [
-  { id: 'EX-01', label: 'Overseas recruitment', reason: 'Only drivers already residing in Saudi Arabia, to avoid complicated processes' },
-  { id: 'EX-02', label: 'Payroll and HR management', reason: 'No salary payment, no employee management during shifts' },
-  { id: 'EX-03', label: 'Signing legal contracts', reason: 'Official government contracts are signed outside the app, after a company decides to hire' },
-  { id: 'EX-04', label: 'Live GPS vehicle tracking', reason: 'A fleet management feature, outside the recruitment scope' },
+  { id: 'EX-01', label: 'Overseas recruitment', reason: 'Only drivers already living in Saudi Arabia.' },
+  { id: 'EX-02', label: 'Payroll and HR management', reason: 'No salaries and no shift management.' },
+  { id: 'EX-03', label: 'Signing legal contracts', reason: 'Contracts are signed outside the app, after hiring.' },
+  { id: 'EX-04', label: 'Live GPS vehicle tracking', reason: 'Fleet management, not recruitment.' },
 ];
 
 
