@@ -28,7 +28,7 @@ export const SLIDES: SlideMeta[] = [
   { label: 'Who is affected', sign: { english: 'Who is affected?' }, Body: Users },
   { label: 'Goal and objectives', sign: { english: 'What do we want to achieve?' }, Body: Goal },
   { label: 'Proposed solution', sign: { english: 'What are we proposing?' }, Body: Solution },
-  { label: 'Scope', sign: { english: 'Where does it stop?' }, Body: Scope },
-  { label: 'What comes next', sign: { english: 'What comes next?' }, Body: Close },
+  { label: 'Scope', sign: { english: 'What is in scope?' }, Body: Scope },
+  { label: 'Dependencies', sign: { english: 'What does it depend on?' }, Body: Close },
   { label: 'Thank you', Body: Thanks },
 ];
